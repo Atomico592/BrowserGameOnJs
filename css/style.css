@@ -1,7 +1,6 @@
 body {
      font-size: 16px;
-     height: auto;
-     overflow: hidden;
+     height: 1000vh;
      font-family: 'Montserrat',
      sans-serif;
 }
@@ -85,11 +84,51 @@ margin-bottom: 60px;
     color: #fff;
     background-color: #8061bb;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .2);
-        transform: scale(1.02);
-        transition: 0.2 s;
+    transform: scale(1.02);
+    transition: 0.2 s;
     cursor: pointer;
     transform: rotate3d(263deg);
 }
 .main-block-btn:active {
     background-color: #4d2e88;
+}
+
+
+
+
+.training-page {
+    background-color: #4db8ec;
+    min-width: 288px;
+    height: 100%;
+    
+        
+}
+.training-page__press {
+        align-self: center;
+        width: 190px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+}
+.training-page__task {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 485px;
+    margin: auto auto;
+    height: 102px;
+    padding: 1.5em 1.2em;
+    box-shadow: 0 7px 35px 0 rgba(0, 0, 0, .3);
+    background: #4db8ec;
+}
+.training-page__task-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+.training-page__task-number {
+    font-size: 50px;
+    font-weight: 600;
 }

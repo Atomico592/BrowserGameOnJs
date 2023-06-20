@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="import" href="index.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,700&display=swap"
-        rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,700&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Document</title>
 </head>
 <body>
+
+    /////////// first page
+
+
     <div class="main-block">
         <div class="header">
             <H1 class="header__title">Найди число</H1>
@@ -37,5 +42,25 @@
         </div>
         <a href="#" class="main-block-btn">Далее</a>
     </div>
+
+/////////////second page
+
+
+<div class="main-block">
+<div class="training-page">
+    <div class="training-page__task">
+        <p class="training-page__task-text">Найти указанное число :</p>
+        <span class="training-page__task-number">75</span>
+    </div>
+    <div id="cards-block"></div>
+    <p class="training-page__press">Нажмите на экран, чтобы продолжить</p>
+</div>
+</div>
+
+<script>
+    let cards = document.getElementById('cards-block');
+    cards.innerHTML
+</script>
+
 </body>
 </html>
