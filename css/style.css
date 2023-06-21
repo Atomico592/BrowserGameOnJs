@@ -132,3 +132,21 @@ margin-bottom: 60px;
     font-size: 50px;
     font-weight: 600;
 }
+.cards-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+.div-0,
+.div-1,
+.div-2,
+.div-3,
+.div-4,
+.div-5,
+.div-6 {
+color: #fff;
+font-size:45px;
+font-weight: 600;
+}
+
