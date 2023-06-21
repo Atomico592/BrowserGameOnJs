@@ -10,7 +10,16 @@ const returnCards = () => {
         div.style.backgroundColor = bgColorsArray[i]
         allDiv.append(div)
     }
+    
     return allDiv
+}
+
+const clickBtn = (className) => {
+    let item = document.getElementsByClassName(className)
+    let item2 = document.querySelector(`.${className}`)
+    item2.onclick = function () {
+        alert('test')
+     };
 }
 
 
