@@ -75,14 +75,14 @@
     clickBtn("main-block-btn")
     clickBtn("div-0")
 
-        console.log(styles.display);
-    
+      
+        let сounter = document.getElementById('counter')
+        let p = document.createElement('p')
+        p.className = 'pCount'
+        let count = 3;
+
         if (styles.display === "block") {
-         console.log(styles.display);
-    let сounter = document.getElementById('counter')
-    let p = document.createElement('p')
-    p.className = 'pCount'
-      let count = 3;
+            
       const countdown = setInterval(() => {
         console.log(count);
         p.innerText = count

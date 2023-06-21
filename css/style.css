@@ -36,8 +36,6 @@ p, ul, li {
     text-align: center;
     position: relative;
     padding: 30px 45px 32px;
-    -webkit-box-shadow: 0px 3px 7px -1px rgba(34, 60, 80, 0.22);
-    -moz-box-shadow: 0px 3px 7px -1px rgba(34, 60, 80, 0.22);
     box-shadow: 0px 3px 7px -1px rgba(34, 60, 80, 0.22);
 }
 .inner-block {
@@ -100,21 +98,21 @@ margin-bottom: 60px;
     background-color: #4db8ec;
     width: 100%;
     height: 100%;
-        padding-top: 60px;
-        box-sizing: border-box;
+    padding-top: 60px;
+    box-sizing: border-box;
     
         
 }
 .training-page__press {
-        align-self: center;
-        width: 190px;
-        padding-bottom: 30px;
-        font-size: 14px;
-        font-weight: 700;
-        color: #fff;
-        position: absolute;
-        bottom: 34px;
-        right: 38%;       
+    align-self: center;
+    width: 190px;
+    padding-bottom: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    position: absolute;
+    bottom: 34px;
+    right: 38%;       
 }
 .training-page__task {
     color: #fff;
@@ -125,10 +123,10 @@ margin-bottom: 60px;
     max-width: 449px;
     margin: auto auto;
     height: 70px;
-padding: 1.3em 1.1em;
+    padding: 1.3em 1.1em;
     box-shadow: 0 7px 35px 0 rgba(0, 0, 0, .3);
     background: #4db8ec;
-        margin-bottom: 25px;
+    margin-bottom: 25px;
 }
 .training-page__task-text {
     font-size: 18px;
@@ -142,16 +140,16 @@ padding: 1.3em 1.1em;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-        padding: 0px 123px;
-        position: relative;
-        width: 66%;
+    padding: 0px 123px;
+    position: relative;
+    width: 66%;
 
 }
 .cards-block__arm {
     position: absolute;
-       left: 189px;
-       z-index: 10;
-       top: 293px;
+    left: 189px;
+    z-index: 10;
+    top: 293px;
 }
 .div-0,
 .div-1,
@@ -208,10 +206,10 @@ opacity: 0.5;
     font-weight: 600;
     width: 100px;
     height: 100px;
-  background-color: grey;
-  border-radius: 50%;
- display: block;
- margin-left: auto;
- margin-right: auto;
+    background-color: #63818F;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
