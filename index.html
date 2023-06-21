@@ -14,10 +14,8 @@
 </head>
 <body>
 
-    /////////// first page
 
-
-    <div class="main-block">
+    <div class="main-block first-page" id="first-page">
         <div class="header">
             <H1 class="header__title">Найди число</H1>
             <span class="header__subtitle">Тренажер на внимание</span>
@@ -39,13 +37,11 @@
                 </li>
             </ul>
         </div>
-        <a href="#" class="main-block-btn">Далее</a>
+        <button class="main-block-btn">Далее</button>
     </div>
 
-/////////////second page
 
-
-<div class="main-block">
+<div class="main-block second-page" id="second-page">
 <div class="training-page">
     <div class="training-page__task">
         <p class="training-page__task-text">Найти указанное число :</p>
@@ -58,12 +54,46 @@
 </div>
 </div>
 
+
+
+<div class="main-block third-page" id="third-page">
+    <div class="counter-page">
+        <div class="counter" id="counter"></div>
+    </div>
+</div>
+
+
+
+
 <script src="/index.js">
 </script>
 <script>
     let cards = document.getElementById('cards-block');
+      const el = document.querySelector('.third-page');
+      const styles = window.getComputedStyle(el);
     cards.append(returnCards())
+    clickBtn("main-block-btn")
     clickBtn("div-0")
+
+        console.log(styles.display);
+    
+        if (styles.display === "block") {
+         console.log(styles.display);
+    let сounter = document.getElementById('counter')
+    let p = document.createElement('p')
+    p.className = 'pCount'
+      let count = 3;
+      const countdown = setInterval(() => {
+        console.log(count);
+        p.innerText = count
+        counter.append(p)
+      count--;
+      if (count < 0) {
+        document.getElementById("third-page").style.display="none" 
+         clearInterval(countdown);
+         } }, 1000);
+
+ }
 
 </script>
 

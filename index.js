@@ -15,12 +15,32 @@ const returnCards = () => {
 }
 
 const clickBtn = (className) => {
-    let item = document.getElementsByClassName(className)
-    let item2 = document.querySelector(`.${className}`)
-    item2.onclick = function () {
-        alert('test')
+    let item = document.querySelector(`.${className}`)
+    item.onclick = function () {
+        if (className == "main-block-btn") {
+            document.getElementById("first-page").style.display = "none";
+            document.getElementById("second-page").style.display = "block";
+        }
+        if (className == "div-0") {
+            document.getElementById("second-page").style.display = "none";
+            document.getElementById("third-page").style.display = "block";
+        }
      };
 }
+
+// const gountdown = (item) => {
+//     let count = 3;
+//     let сounter = document.querySelector(`.${item}`)
+//     let span = document.createElement('span')
+//     const countdown = setInterval(() => {
+//          span.innerText = count
+//          counter.append(span)
+//        count--;
+//        if (count < 1) {
+//            clearInterval(countdown);
+//        }
+//    }, 1000);
+// }
 
 
 
