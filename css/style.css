@@ -110,6 +110,9 @@ margin-bottom: 60px;
         font-size: 14px;
         font-weight: 700;
         color: #fff;
+        position: absolute;
+        bottom: 0;
+        right: 38%;       
 }
 .training-page__task {
     color: #fff;
@@ -117,9 +120,9 @@ margin-bottom: 60px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 485px;
+    max-width: 449px;
     margin: auto auto;
-    height: 102px;
+    height: 70px;
     padding: 1.5em 1.2em;
     box-shadow: 0 7px 35px 0 rgba(0, 0, 0, .3);
     background: #4db8ec;
@@ -136,7 +139,14 @@ margin-bottom: 60px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    
+    padding: 0 50px;
+    position: relative;
+}
+.cards-block__arm {
+    position: absolute;
+        left: 134px;
+        z-index: 10;
+        top: 227px;
 }
 .div-0,
 .div-1,
@@ -148,5 +158,18 @@ margin-bottom: 60px;
 color: #fff;
 font-size:45px;
 font-weight: 600;
+margin-bottom: 25px;
+width: 29%;
+height: 103px;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0.5;
+
+}
+
+.div-0 {
+    cursor: pointer;
+    opacity: 1;
 }
 

@@ -4,10 +4,9 @@ const returnCards = () => {
      let allDiv = document.createElement('div');
      allDiv.classList.add('cards-block');
     for (let i = 0; i < array.length; i++) {
-        let div = document.createElement('div');
+        let div = document.createElement('div')
         div.className = "div-" + i;
         div.innerText = array[i];
-        div.style.width = "32%"
         div.style.backgroundColor = bgColorsArray[i]
         allDiv.append(div)
     }
