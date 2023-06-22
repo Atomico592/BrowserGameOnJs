@@ -73,9 +73,13 @@ const getRandomCards = (lvl) => {
                 getRandomNumber = Math.floor(Math.random() * (100 - 0 + 1)) + 0
                 break;
                 case 3 :
+                    case 4:
+                        case 5:
                 getRandomNumber = Math.floor(Math.random() * (1000 - 0 + 1)) + 0
                 break;
                 case 7 :
+                    case 8:
+                        case 9:
                 getRandomNumber = Math.floor(Math.random() * (10000 - 0 + 1)) + 0
                 break;
             }
@@ -83,10 +87,15 @@ const getRandomCards = (lvl) => {
              let div = document.createElement('div')
              div.className = "gameCard-" + i;
              div.className = "test"
+            //  if (count % 2 == 0) {
+            //      div.style.width = `calc(100% / (${count / 2}) - 2%)`;
+            //  }
              div.innerText = getRandomNumber;
              div.style.backgroundColor = bgColorsArray[Math.floor(Math.random() * (5 - 0 + 1)) + 0]
              createDiv.append(div)
          }
+
+
          return createDiv
 }
 

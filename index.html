@@ -62,7 +62,7 @@
 
 
 <div class="main-block">
-    <div class="game-field">
+    <div class="game-field-container">
         
     </div>
 </div>
@@ -78,12 +78,12 @@
 
      let gameState = {
      gameLvl : 9,
-     currentLvl: 8,
+     currentLvl: 7,
      bonus : 1,
      counter : 60
      }
 
-    let item = document.getElementsByClassName('game-field')[0]
+    let item = document.getElementsByClassName('game-field-container')[0]
 
           item.addEventListener('click', e  => {
                 const bgArray = ["#f28e37", '#fc73b0', '#8e3dcb', '#94c94d', '#94c94d', '#4db8ec']
@@ -93,13 +93,11 @@
     
 
     const letsPlayBitch = () => {
-         let item = document.getElementsByClassName('game-field')[0]
+         let item = document.getElementsByClassName('game-field-container')[0]
        item.append(getRandomCards(gameState.currentLvl))
     }
 
     letsPlayBitch()
-
-
 
 
    
