@@ -46,6 +46,10 @@ p, ul, li {
     left: 0;
     right: 0;
 }
+
+
+
+
 .header__title {
     font-size: 36px;
     font-weight: 800;
@@ -302,4 +306,20 @@ opacity: 0.5;
 #toFindWhat {
     font-size: 50px;
     padding-left: 60px;
+}
+
+.result-header {
+       background-color: #4db8ec;
+       background-image: url(https://wikium.ru/games_build/images/dfa5695938b3bf438aa3e7e69eeea005.svg);
+       background-repeat: no-repeat;
+       background-position: 50%;
+       color: #fff !important;
+}
+
+.result-page-title {
+    position: relative;
+    z-index: 60;
+    font-size: 2.3em;
+    font-weight: 300;
+    line-height: 1;
 }

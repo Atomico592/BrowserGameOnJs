@@ -153,8 +153,12 @@ const findTheNumber = () => {
     document.addEventListener('click', (e) => {
         
         if (e.target.innerText === getNum) {
-            gameState.currentLvl = gameState.currentLvl + 1
+            gameState.currentLvl++
             console.log(gameState.currentLvl);
+        } else {
+            //// реализация неверного ответа ?
+            gameState.incorrectUnswer++
+            console.log(gameState.incorrectUnswer);
         }
     })
     
