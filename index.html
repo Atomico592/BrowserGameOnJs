@@ -61,46 +61,97 @@
 </div>
 
 
-<div class="main-block">
+<div class="main-block game-page">
     <div class="game-field-container">
-        
+        <div class="game-field-menu">
+            <div class="game-field-menu_item-time">
+                <p class="game-field-menu-title-text">Время</p><span id="timer"
+                    class="game-field-menu-title-inner-text">01:00</span>
+            </div>
+            <div class="game-field-menu_item-lvl">
+                <p class="game-field-menu-title-text">Уровень</p><span id="lvl"
+                    class="game-field-menu-title-inner-text"></span>
+            </div>
+            <div class="game-field-menu_item-points">
+                <p class="game-field-menu-title-text">Очки</p><span id="points"
+                    class="game-field-menu-title-inner-text"></span>
+            </div>
+            <div class="game-field-menu_item-bonus">
+                <p class="game-field-menu-title-text">Бонус</p><span id="bonus"
+                    class="game-field-menu-title-inner-text"></span>
+            </div>
+        </div>
+          <div class="training-page__task">
+              <p class="training-page__task-text"> <span>Найти указанное число :</span> <span id="toFindWhat"></span>
+              </p>
+              <span class="training-page__task-number game-field-task"></span>
     </div>
+</div>
 </div>
 
 <script src="/index.js">
 </script>
 <script>
+
+    let gameState = {
+    gameLvl : 9,
+    currentLvl: 9,
+    bonus : 1,
+    timer : 59,
+    points : 0,
+    incorrectUnswer : 0
+    }
+
+    let lvl = document.getElementById("lvl").innerText = `${gameState.currentLvl} - ${gameState.gameLvl}`
+    let points = document.getElementById("points").innerText = gameState.points
+    let bonus = document.getElementById("bonus").innerText = gameState.bonus
     let cards = document.getElementById('cards-block');
+
+
+
     cards.append(returnCards())
     clickBtn("main-block-btn")
     clickBtn("div-0")
 
-
-     let gameState = {
-     gameLvl : 9,
-     currentLvl: 7,
-     bonus : 1,
-     counter : 60
-     }
-
-    let item = document.getElementsByClassName('game-field-container')[0]
-
-          item.addEventListener('click', e  => {
-                const bgArray = ["#f28e37", '#fc73b0', '#8e3dcb', '#94c94d', '#94c94d', '#4db8ec']
-                const bgColor = Math.floor(Math.random() * (bgArray.length - 0 + 1)) + 0;
-                item.style.backgroundColor = bgArray[bgColor];
-          })
     
 
-    const letsPlayBitch = () => {
-         let item = document.getElementsByClassName('game-field-container')[0]
-       item.append(getRandomCards(gameState.currentLvl))
-    }
-
-    letsPlayBitch()
 
 
-   
+
+//таймер на переделку
+  const  updateTimer = () => {
+  var timerElement = document.getElementById("timer");
+  var time = timerElement.innerHTML.split(":");
+  var minutes = parseInt(time[0]);
+  var seconds = parseInt(time[1]);
+  if (minutes === 0 && seconds === 0) {
+  return;
+  }
+  if (seconds === 0) {
+  minutes--;
+  seconds = gameState.timer;
+  } else {
+  seconds--;
+  }
+  timerElement.innerHTML = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+  setTimeout(updateTimer, 1000);
+  }
+
+  
+  updateTimer();
+
+// 
+
+
+ 
+
+
+  
+
+    letsPlay()
+
+
+   findTheNumber()
     
 </script>
 
