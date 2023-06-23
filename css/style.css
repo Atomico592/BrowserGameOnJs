@@ -323,7 +323,9 @@ opacity: 0.5;
     padding-left: 60px;
 }
 
-
+.result-page {
+    display: none;
+}
 
 .result-header {
     background-blend-mode: multiply;

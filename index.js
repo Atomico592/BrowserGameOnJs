@@ -1,6 +1,3 @@
-   
-
-
 const returnCards = () => {
     const array = ["75", "1", "35", "", "885", "40"]
     const bgColorsArray = ["#f28e37", '#fc73b0', '#8e3dcb', '#94c94d', '#94c94d', '#4db8ec']
@@ -15,8 +12,6 @@ const returnCards = () => {
     }
     return allDiv
 }
-
-
 
 const clickBtn = (className) => {
     let item = document.querySelector(`.${className}`)
@@ -34,7 +29,6 @@ const clickBtn = (className) => {
         }
     })
 }
-
 
 const countdown = () => {
     
@@ -56,9 +50,6 @@ const countdown = () => {
   }, 900);
 }
 
-
-
-
 const getRandomCards = (lvl) => {
 
     const bgColorsArray = ["#f28e37", '#fc73b0', '#8e3dcb', '#94c94d', '#94c94d', '#4db8ec']
@@ -72,7 +63,6 @@ const getRandomCards = (lvl) => {
 
     if (gameFieldDiv) gameFieldDiv.remove()
     
-
     for (let k = numbers.length - 1; k > 0; k--) {
         let j = Math.floor(Math.random() * (k + 1));
         [numbers[k], numbers[j]] = [numbers[j], numbers[k]];
@@ -91,6 +81,7 @@ const getRandomCards = (lvl) => {
 
     for (let i = 1; i <= count; i++) {
         let getRandomNumber;
+
         switch (lvl) {
             case 1:
                 getRandomNumber = numbers[i]
@@ -114,6 +105,11 @@ const getRandomCards = (lvl) => {
         let gameNumCards = document.createElement('div')
         gameNumCards.className = "gameCards"
         
+
+        if (lvl > 2) {
+            gameNumCards.classList.add(`${animationsClass[Math.floor(Math.random() * 3)]}`)
+        }
+            
        
             switch (count) {
                 case 12:
@@ -139,26 +135,13 @@ const getRandomCards = (lvl) => {
                         break;
                         default:
                             break;
-        } 
+            } 
 
-        
-                          if (lvl > 2) {
-                              let randomAnimation = Math.floor(Math.random() * 3)
-                              if (randomAnimation === 2) {
-                                  gameNumCards.innerHTML = `<span class='inner-span'>${getRandomNumber}</span>`
-                                  let a = document.getElementsByClassName('inner-span')
-                                  a.classList.add(animationsClass[2])
-                              } else {
-                                  gameNumCards.classList.add(`${animationsClass[Math.floor(Math.random() * 2)]}`)
-                              }  
-                             }
-                    
-                      
-                        gameNumCards.innerHTML = `<span class='inner-span'>${getRandomNumber}</span>`
-                        gameNumCards.style.backgroundColor = bgColorsArray[Math.floor(Math.random() * (5 - 0 + 1)) + 0]
-                        createDiv.append(gameNumCards)
-                    } 
-                    return createDiv
+                gameNumCards.innerHTML = `<span class='inner-span'>${getRandomNumber}</span>`
+                gameNumCards.style.backgroundColor = bgColorsArray[Math.floor(Math.random() * (5 - 0 + 1)) + 0]
+                createDiv.append(gameNumCards)
+    } 
+    return createDiv
 }
 
 
@@ -167,28 +150,32 @@ const findTheNumber = () => {
     let random = Math.floor(Math.random() * currentCard.length)
     let getNum = currentCard[random].innerText
     document.querySelector('#toFindWhat').innerText = getNum
-    document.addEventListener('click', (e) => {
+    let cards = document.querySelector('.game-field').childNodes
+    cards.forEach(e => {
+        e.addEventListener('click', (e) => {
         if (document.querySelector('.third-page').style.display === "none") {
             if (gameState.currentLvl <= gameState.gameLvl - 1) {
                 if (e.target.innerText === getNum) {
+                    if (gameState.bonus !== 5) gameState.bonus++
                     gameState.currentLvl++
-                    if (gameState.bonus !==5) gameState.bonus++
                     gameState.currentUnswer++
                     gameState.points += (Math.floor(Math.random() * (220 - 20 + 1)) + 20) * gameState.bonus
                         letsPlay(gameState.currentLvl)
-                    
                 } else {
-                    // gameState.currentUnswer--
-                    // gameState.bonus--
+                    gameState.incorrectUnswer++
+                    gameState.bonus--
+                    gameState.currentLvl--
+                    letsPlay(gameState.currentLvl)
+                    
                 }
             } else {
                 document.querySelector('.game-page').style.display = "none"
+                document.querySelector('.result-page').style.display = "block"
             }
         }
     })
-    
+     });
 }
-
 
 
 const letsPlay = (num) => {
@@ -196,24 +183,22 @@ const letsPlay = (num) => {
     document.getElementById("points").innerText = gameState.points
     document.getElementById("bonus").innerText = `X${gameState.bonus}`
     document.querySelector('#result-page-content-point').innerHTML = gameState.points
-    document.querySelector('#result-page-content-answers').innerHTML = `${gameState.currentUnswer} из ${gameState.gameLvl}`
-    document.querySelector('#result-page-content-accuracy').innerHTML = `${gameState.incorrectUnswer === 0 ? "100%" : `${(gameState.currentUnswer * 100) / gameState.incorrectUnswer}%`}`
+    document.querySelector('#result-page-content-answers').innerHTML = `${gameState.currentUnswer - gameState.incorrectUnswer} из ${gameState.gameLvl}`
+    document.querySelector('#result-page-content-accuracy').innerHTML = `${gameState.incorrectUnswer === 0 ? "100%" : `${(gameState.gameLvl * 100) / gameState.currentUnswer}%`}`
       let item = document.getElementsByClassName('game-field-container')[0]
       item.append(getRandomCards(num))
       findTheNumber()    
 }
     
+const startTimer = () => {
+    gameState.timer--;
+    document.querySelector('.game-field-menu-title-inner-text').innerText = `00:${gameState.timer < 10 ? "0" + gameState.timer : gameState.timer}`
+    if (gameState.timer === 0) {
+        clearInterval(timerInterval);
+    }
+}
 
-
-         const startTimer = () => {
-             gameState.timer--;
-             document.querySelector('.game-field-menu-title-inner-text').innerText = `00:${gameState.timer < 10 ? "0" + gameState.timer : gameState.timer}`
-             if (gameState.timer === 0) {
-                 clearInterval(timerInterval);
-             }
-         }
-
-         let timerInterval = setInterval(startTimer, 1000)
+let timerInterval = setInterval(startTimer, 1000)
     
 
 

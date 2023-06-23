@@ -108,36 +108,26 @@
                 <span class="result-page-content-results" id="result-page-content-accuracy"></span>
             </div>
         </div>
-   
 </div>
 
-
-
-<script src="/index.js">
-</script>
+<script src="/index.js"></script>
 <script>
-
     let gameState = {
     gameLvl : 9,
     currentLvl: 1,
     bonus : 1,
-    timer : 15,
+    timer : 60,
     points : 0,
     incorrectUnswer : 0,
     currentUnswer: 0,
     }
-
-   
 
     let cards = document.getElementById('cards-block');
     cards.append(returnCards())
     clickBtn("main-block-btn")
     clickBtn("div-0")
 
-
-  letsPlay(gameState.currentLvl)
-
-  
+    letsPlay(gameState.currentLvl)
 </script>
 
 </body>
