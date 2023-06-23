@@ -64,17 +64,21 @@ const getRandomCards = (lvl) => {
    
     let item = document.getElementsByClassName('game-field-container')[0]
     let createDiv = document.createElement('div');
+    let gameFieldDiv = document.querySelector('.game-field');
     let count = 6;
     let numbers = Array.from({ length: 10 }, (_, i) => i + 1);
 
-    for (var k = numbers.length - 1; k > 0; k--) {
-        var j = Math.floor(Math.random() * (k + 1));
+    if (gameFieldDiv) gameFieldDiv.remove()
+    
+
+    for (let k = numbers.length - 1; k > 0; k--) {
+        let j = Math.floor(Math.random() * (k + 1));
         [numbers[k], numbers[j]] = [numbers[j], numbers[k]];
     }
 
     item.style.backgroundColor = bgColorsArray[lvl - 1];
     createDiv.className = "game-field"
-
+    
          if (lvl >= 4 && lvl < 6) {
             count = 12
         } else if (lvl >= 6 && lvl < 8 ) {
@@ -90,23 +94,22 @@ const getRandomCards = (lvl) => {
                 getRandomNumber = numbers[i]
                 break;
                 case 2 :
-                getRandomNumber = Math.floor(Math.random() * (100 - 0 + 1)) + 0
+                getRandomNumber = Math.floor(Math.random() * (100 - 10 + 1)) + 10 
                 break;
                 case 3 :
                     case 4:
                 case 5:
                     case 6:
-                getRandomNumber = Math.floor(Math.random() * (1000 - 0 + 1)) + 0
+                getRandomNumber = Math.floor(Math.random() * (1000 - 100 + 1)) + 100
                 break;
                 case 7 :
                     case 8:
                         case 9:
-                getRandomNumber = Math.floor(Math.random() * (10000 - 0 + 1)) + 0
+                getRandomNumber = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000
                 break;
             }
             
              let div = document.createElement('div')
-             div.className = "gameCard-" + i;
              div.className = "gameCards"
             if (lvl > 2) div.style.animation = `${animations[Math.floor(Math.random() * 3)]}`
 
@@ -134,9 +137,10 @@ const getRandomCards = (lvl) => {
                     break;
                 default:
                     break;
-            }
-                
-             div.innerText = getRandomNumber;
+            } 
+            div.innerText = getRandomNumber
+            //  div.innerHTML = `<span>${getRandomNumber}</span>`;
+            //  div.firstChild.style.animation = "rotate .6s linear infinite"
              div.style.backgroundColor = bgColorsArray[Math.floor(Math.random() * (5 - 0 + 1)) + 0]
              createDiv.append(div)
          } 
@@ -148,17 +152,13 @@ const findTheNumber = () => {
     let gameField = document.querySelector('.game-field').childNodes  
     let item = Math.floor(Math.random() * gameField.length)
     let getNum = gameField[item].innerText
-    let toFindWhat = document.querySelector('#toFindWhat').innerText = getNum
+    document.querySelector('#toFindWhat').innerText = getNum
         
     document.addEventListener('click', (e) => {
-        
+        if (gameState.currentLvl <= gameState.gameLvl - 1)
         if (e.target.innerText === getNum) {
-            gameState.currentLvl++
-            console.log(gameState.currentLvl);
-        } else {
-            //// реализация неверного ответа ?
-            gameState.incorrectUnswer++
-            console.log(gameState.incorrectUnswer);
+            gameState.currentLvl = gameState.currentLvl + 1
+            letsPlay(gameState.currentLvl)
         }
     })
     
@@ -166,9 +166,13 @@ const findTheNumber = () => {
 
 
 
-  const letsPlay = () => {
+  const letsPlay = (num) => {
+        document.getElementById("lvl").innerText = `${gameState.currentLvl} - ${gameState.gameLvl}`
+        document.getElementById("points").innerText = gameState.points
+        document.getElementById("bonus").innerText = gameState.bonus
       let item = document.getElementsByClassName('game-field-container')[0]
-      item.append(getRandomCards(gameState.currentLvl))
+      item.append(getRandomCards(num))
+        findTheNumber()
   }
 
 

@@ -103,27 +103,17 @@
 
     let gameState = {
     gameLvl : 9,
-    currentLvl: 9,
+    currentLvl: 1,
     bonus : 1,
     timer : 59,
     points : 0,
     incorrectUnswer : 0
     }
 
-    let lvl = document.getElementById("lvl").innerText = `${gameState.currentLvl} - ${gameState.gameLvl}`
-    let points = document.getElementById("points").innerText = gameState.points
-    let bonus = document.getElementById("bonus").innerText = gameState.bonus
     let cards = document.getElementById('cards-block');
-
-
-
     cards.append(returnCards())
     clickBtn("main-block-btn")
     clickBtn("div-0")
-
-    
-
-
 
 
 //таймер на переделку
@@ -144,23 +134,13 @@
   timerElement.innerHTML = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
   setTimeout(updateTimer, 1000);
   }
-
-  
   updateTimer();
-
 // 
 
 
- 
-
+  letsPlay(gameState.currentLvl)
 
   
-
-    letsPlay()
-
-
-   findTheNumber()
-    
 </script>
 
 </body>
