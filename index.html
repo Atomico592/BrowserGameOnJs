@@ -65,8 +65,9 @@
     <div class="game-field-container">
         <div class="game-field-menu">
             <div class="game-field-menu_item-time">
-                <p class="game-field-menu-title-text">Время</p><span id="timer"
-                    class="game-field-menu-title-inner-text">01:00</span>
+                <p class="game-field-menu-title-text">Время</p>
+                <span id="timer"
+                    class="game-field-menu-title-inner-text"></span>
             </div>
             <div class="game-field-menu_item-lvl">
                 <p class="game-field-menu-title-text">Уровень</p><span id="lvl"
@@ -90,9 +91,24 @@
 </div>
 
 <div class="main-block result-page">
-    <div class="result-header">
+    <div class="result-header"> 
         <h3 class="result-page-title">Ваши результаты</h3>
     </div>
+        <div class="result-page-content">
+            <div class="result-page-content-wrapper">
+                <span>Текущий результат </span>
+                <span class="result-page-content-results" id="result-page-content-point"></span>
+            </div>
+            <div class="result-page-content-wrapper">
+                <span>Верных ответов</span>
+                <span class="result-page-content-results" id="result-page-content-answers"></span>
+            </div>
+            <div class="result-page-content-wrapper">
+                <span>Точность ответов</span>
+                <span class="result-page-content-results" id="result-page-content-accuracy"></span>
+            </div>
+        </div>
+   
 </div>
 
 
@@ -105,37 +121,18 @@
     gameLvl : 9,
     currentLvl: 1,
     bonus : 1,
-    timer : 59,
+    timer : 15,
     points : 0,
-    incorrectUnswer : 0
+    incorrectUnswer : 0,
+    currentUnswer: 0,
     }
+
+   
 
     let cards = document.getElementById('cards-block');
     cards.append(returnCards())
     clickBtn("main-block-btn")
     clickBtn("div-0")
-
-
-//таймер на переделку
-  const  updateTimer = () => {
-  var timerElement = document.getElementById("timer");
-  var time = timerElement.innerHTML.split(":");
-  var minutes = parseInt(time[0]);
-  var seconds = parseInt(time[1]);
-  if (minutes === 0 && seconds === 0) {
-  return;
-  }
-  if (seconds === 0) {
-  minutes--;
-  seconds = gameState.timer;
-  } else {
-  seconds--;
-  }
-  timerElement.innerHTML = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-  setTimeout(updateTimer, 1000);
-  }
-  updateTimer();
-// 
 
 
   letsPlay(gameState.currentLvl)

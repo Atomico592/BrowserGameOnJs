@@ -33,6 +33,23 @@ p, ul, li {
         opacity: 0;
     }
 }
+
+.rotate {
+    animation: rotate .6s linear infinite;
+    animation-delay: .4s;
+}
+
+.scale {
+    animation: scale .4s ease-in infinite alternate;
+    animation-delay: .4s;
+}
+
+.blink {
+    animation: blink .4s ease-in infinite alternate;
+    animation-delay: .4s;
+}
+
+
 .header {
     color: white;
     width: 100%;
@@ -195,7 +212,6 @@ display: flex;
 align-items: center;
 justify-content: center;
 opacity: 0.5;
-
 }
 
 .div-0 {
@@ -243,7 +259,7 @@ opacity: 0.5;
 .game-field-container {
   background-color: #4db8ec;
   padding-top: 60px;
-      box-sizing: border-box;
+  box-sizing: border-box;
   height: 100%;
   position: relative;
 }
@@ -273,8 +289,7 @@ opacity: 0.5;
         padding: 0 16px;
         background-color: hsla(0, 0%, 100%, .4);
         color: #333;
-        animation: gameMenuEnter .5s;
-        z-index: 9999;
+        z-index: 11;
 }
 .game-field-menu-title-text {
     font-size: 7px;
@@ -297,7 +312,7 @@ opacity: 0.5;
     align-items: center;
     justify-content: center;
     margin-bottom: 2%;
-    animation-delay: .4s;
+    
 }
 
 .gameCards:hover {
@@ -308,18 +323,41 @@ opacity: 0.5;
     padding-left: 60px;
 }
 
+
+
 .result-header {
-       background-color: #4db8ec;
-       background-image: url(https://wikium.ru/games_build/images/dfa5695938b3bf438aa3e7e69eeea005.svg);
-       background-repeat: no-repeat;
-       background-position: 50%;
-       color: #fff !important;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image:  url(https://wikium.ru/games_build/images/dfa5695938b3bf438aa3e7e69eeea005.svg);
+    background-size: 100%;
+    padding: 20px;
+    position: relative;
 }
 
 .result-page-title {
+    color: #fff;
     position: relative;
     z-index: 60;
     font-size: 2.3em;
     font-weight: 300;
     line-height: 1;
+    
 }
+.result-page-content {
+    position: absolute;
+    top: 250px;
+    left: 200px;
+}
+.result-page-content-results {
+    color: #3F3F3F;
+    font-weight: 700;
+}
+.result-page-content-wrapper {
+        width: 300px;
+        color: #999;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 25px;
+}
+
