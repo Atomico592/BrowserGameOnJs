@@ -105,11 +105,17 @@ const getRandomCards = (lvl) => {
         let gameNumCards = document.createElement('div')
         gameNumCards.className = "gameCards"
         
+        gameNumCards.innerHTML = `<span class='inner-span'>${getRandomNumber}</span>`
 
         if (lvl > 2) {
-            gameNumCards.classList.add(`${animationsClass[Math.floor(Math.random() * 3)]}`)
+            let anim = Math.floor(Math.random() * 3)
+            if (anim != 2) {
+                gameNumCards.classList.add(`${animationsClass[anim]}`)
+            } else {
+                gameNumCards.childNodes[0].classList.add(animationsClass[anim])
+            }
+           
         }
-            
        
             switch (count) {
                 case 12:
@@ -137,7 +143,6 @@ const getRandomCards = (lvl) => {
                             break;
             } 
 
-                gameNumCards.innerHTML = `<span class='inner-span'>${getRandomNumber}</span>`
                 gameNumCards.style.backgroundColor = bgColorsArray[Math.floor(Math.random() * (5 - 0 + 1)) + 0]
                 createDiv.append(gameNumCards)
     } 
@@ -156,16 +161,27 @@ const findTheNumber = () => {
         if (document.querySelector('.third-page').style.display === "none") {
             if (gameState.currentLvl <= gameState.gameLvl - 1) {
                 if (e.target.innerText === getNum) {
-                    if (gameState.bonus !== 5) gameState.bonus++
+                    if (gameState.bonus !== 5) {
+                        gameState.bonus++
+                        let circle = document.getElementsByClassName(`circle-${gameState.bonus}`)[0]
+                        circle.style.backgroundColor = "#333"
+                    } 
+                        
                     gameState.currentLvl++
                     gameState.currentUnswer++
                     gameState.points += (Math.floor(Math.random() * (220 - 20 + 1)) + 20) * gameState.bonus
                         letsPlay(gameState.currentLvl)
                 } else {
                     gameState.incorrectUnswer++
-                    gameState.bonus--
-                    gameState.currentLvl--
-                    letsPlay(gameState.currentLvl)
+                    if (gameState.bonus > 1) {
+                        gameState.bonus--
+                        let circle = document.getElementsByClassName(`circle-${gameState.bonus+1}`)[0]
+                        circle.style.backgroundColor = "inherit"
+                    }
+                    if (gameState.currentLvl > 1) {
+                        gameState.currentLvl--
+                        letsPlay(gameState.currentLvl)
+                    }
                     
                 }
             } else {

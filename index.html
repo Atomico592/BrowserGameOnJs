@@ -78,8 +78,14 @@
                     class="game-field-menu-title-inner-text"></span>
             </div>
             <div class="game-field-menu_item-bonus">
-                <p class="game-field-menu-title-text">Бонус</p><span id="bonus"
-                    class="game-field-menu-title-inner-text"></span>
+                <p class="game-field-menu-title-text">Бонус</p>
+                  <span class="bonus-point-circle circle-1"></span>
+                  <span class="bonus-point-circle circle-2"></span>
+                  <span class="bonus-point-circle circle-3"></span>
+                  <span class="bonus-point-circle circle-4"></span>
+                  <span class="bonus-point-circle circle-5"></span>
+                <span id="bonus" class="game-field-menu-title-inner-text">
+                </span>
             </div>
         </div>
           <div class="training-page__task">
@@ -122,7 +128,7 @@
     currentUnswer: 0,
     }
 
-    let cards = document.getElementById('cards-block');
+    let cards = document.getElementById('cards-block')
     cards.append(returnCards())
     clickBtn("main-block-btn")
     clickBtn("div-0")
