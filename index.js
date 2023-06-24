@@ -212,7 +212,6 @@ const letsPlay = (num) => {
 
             if (gameState.timer === 0) {
                 clearInterval(countdown);
-             alert('etete')
             }
         }, 1000);
     }
