@@ -43,6 +43,7 @@ const countdown = () => {
       counter.append(p)
       count--;
       if (count < 0) {
+          getStart()
           document.getElementById("third-page").style.display = "none"
            document.getElementsByClassName("game-page")[0].style.display = "block";
           clearInterval(countdown);
@@ -51,7 +52,6 @@ const countdown = () => {
 }
 
 const getRandomCards = (lvl) => {
-
     const bgColorsArray = ["#f28e37", '#fc73b0', '#8e3dcb', '#94c94d', '#94c94d', '#4db8ec']
     const animationsClass= ["blink","scale","rotate"]
    
@@ -166,7 +166,6 @@ const findTheNumber = () => {
                         let circle = document.getElementsByClassName(`circle-${gameState.bonus}`)[0]
                         circle.style.backgroundColor = "#333"
                     } 
-                        
                     gameState.currentLvl++
                     gameState.currentUnswer++
                     gameState.points += (Math.floor(Math.random() * (220 - 20 + 1)) + 20) * gameState.bonus
@@ -180,13 +179,13 @@ const findTheNumber = () => {
                     }
                     if (gameState.currentLvl > 1) {
                         gameState.currentLvl--
-                        letsPlay(gameState.currentLvl)
+                              letsPlay(gameState.currentLvl) 
                     }
                     
                 }
             } else {
-                document.querySelector('.game-page').style.display = "none"
-                document.querySelector('.result-page').style.display = "block"
+                    document.querySelector('.game-page').style.display = "none"
+                    document.querySelector('.result-page').style.display = "block"
             }
         }
     })
@@ -205,19 +204,18 @@ const letsPlay = (num) => {
       item.append(getRandomCards(num))
       findTheNumber()    
 }
-    
-const startTimer = () => {
-    gameState.timer--;
-    document.querySelector('.game-field-menu-title-inner-text').innerText = `00:${gameState.timer < 10 ? "0" + gameState.timer : gameState.timer}`
-    if (gameState.timer === 0) {
-        clearInterval(timerInterval);
+        
+    const  getStart = () => {
+        let countdown = setInterval(function () {
+            gameState.timer--;
+             document.querySelector('.game-field-menu-title-inner-text').innerText = `00:${gameState.timer < 10 ? "0" + gameState.timer : gameState.timer}`
+
+            if (gameState.timer === 0) {
+                clearInterval(countdown);
+             alert('etete')
+            }
+        }, 1000);
     }
-}
-
-let timerInterval = setInterval(startTimer, 1000)
-    
-
-
 
 
 
